@@ -1,11 +1,22 @@
 "use client";
+
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function ProfilePage() {
-const { data: session, isPending, error } = authClient.useSession();
-    const user = session?.user;
+  const router = useRouter();
+  const { data: session, isPending, error } = authClient.useSession();
+
+  // ✅ Redirect (ONLY here)
+  useEffect(() => {
+    if (!isPending && (!session || error)) {
+      router.replace("/auth/signin"); // replace better than push
+    }
+  }, [isPending, session, error, router]);
+
+  // ⏳ Loading state
   if (isPending) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -13,13 +24,11 @@ const { data: session, isPending, error } = authClient.useSession();
       </div>
     );
   }
-  if (error || !user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        Error loading profile.
-      </div>
-    );
-  }
+
+  // ❌ Prevent render before redirect
+  if (!session) return null;
+
+  const user = session.user;
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4">
@@ -32,7 +41,7 @@ const { data: session, isPending, error } = authClient.useSession();
           {/* Avatar */}
           <div className="relative w-32 h-32">
             <Image
-              src={user.image || "/images/avatar.png"}
+              src={"https://i.postimg.cc/yxrRc1P4/images.png"}
               alt="Profile"
               fill
               className="rounded-full object-cover"
@@ -41,8 +50,13 @@ const { data: session, isPending, error } = authClient.useSession();
 
           {/* Info */}
           <div className="text-center md:text-left">
-            <h1 className="text-2xl font-bold">{user.name}</h1>
-            <p className="text-gray-500">{user.email}</p>
+            <h1 className="text-2xl font-bold">
+              {user?.name || "User"}
+            </h1>
+
+            <p className="text-gray-500">
+              {user?.email}
+            </p>
 
             <button className="mt-3 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
               Edit Profile
@@ -52,7 +66,6 @@ const { data: session, isPending, error } = authClient.useSession();
 
         {/* 📊 Stats */}
         <div className="grid grid-cols-3 gap-6 text-center mt-10">
-
           <div>
             <h3 className="text-xl font-bold">12</h3>
             <p className="text-gray-500 text-sm">Orders</p>
@@ -67,10 +80,9 @@ const { data: session, isPending, error } = authClient.useSession();
             <h3 className="text-xl font-bold">3</h3>
             <p className="text-gray-500 text-sm">Reviews</p>
           </div>
-
         </div>
 
-        {/* 📦 Recent Activity */}
+        {/* 📦 Activity */}
         <div className="mt-10">
           <h2 className="text-lg font-semibold mb-4">
             Recent Activity

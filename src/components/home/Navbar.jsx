@@ -1,6 +1,7 @@
 "use client"
 // import { auth } from '@/lib/auth'
 import { authClient } from '@/lib/auth-client'
+import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
 function Navbar() {
@@ -48,7 +49,13 @@ const signOut = async () => {
               href="/profile"
               className="btn btn-ghost btn-sm"
             >
-              {session.user?.name || "Profile"}
+              <Image
+                src={"https://i.postimg.cc/yxrRc1P4/images.png"}
+                alt="Profile"
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
             </Link>
 
             <button

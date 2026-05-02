@@ -35,12 +35,12 @@ export default function Banner() {
             Browse Tiles
           </Link>
 
-          <Link
+          {/* <Link
             href="/auth/register"
             className="px-7 py-3 rounded-full border border-white/30 text-white hover:bg-white hover:text-black transition"
           >
             Join Community
-          </Link>
+          </Link> */}
 
         </div>
 
