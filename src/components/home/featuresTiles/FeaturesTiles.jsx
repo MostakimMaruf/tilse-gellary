@@ -13,8 +13,9 @@ const res = await fetch(
 const tiles = await res.json();
 
   return (
-    <section className="py-16 px-4 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-8 text-center">
+    <section className="py-16 px-4  mx-auto bg-gray-100">
+      <div className="max-w-6xl mx-auto">
+         <h2 className="text-3xl font-bold text-black mb-8 text-center">
         Featured Tiles
       </h2>
 
@@ -23,6 +24,8 @@ const tiles = await res.json();
           <TileCard key={tile._id} tile={tile} />
         ))}
       </div>
+      </div>
+     
     </section>
   );
 };

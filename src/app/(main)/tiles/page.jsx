@@ -18,10 +18,10 @@ export default function AllTilesPage() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="  bg-gray-100 ">
 
-
-      <input
+      <div className="max-w-6xl mx-auto">
+        <input
         type="text"
         placeholder="Search tiles..."
         className="w-full p-3 border rounded-lg mb-8"
@@ -34,6 +34,8 @@ export default function AllTilesPage() {
           <TileCard key={tile.id} tile={tile} />
         ))}
       </div>
+      </div>
+      
 
     </div>
   );

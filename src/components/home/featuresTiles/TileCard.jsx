@@ -10,7 +10,6 @@ const TileCard = ({ tile }) => {
 
   return (
     <div className=" border border-gray-300 shadow-2xl rounded-xl p-3 hover:shadow-xl transition duration-300 group bg-white">
-
       <div className="relative w-full h-48 overflow-hidden rounded-lg">
         <Image
           src={imgSrc}
@@ -32,13 +31,9 @@ const TileCard = ({ tile }) => {
           {tile?.title || tile?.name}
         </h3>
 
-        <p className="text-sm text-gray-500 capitalize">
-          {tile?.category}
-        </p>
+        <p className="text-sm text-gray-500 capitalize">{tile?.category}</p>
 
-        <p className="text-base font-bold text-black">
-          ${tile?.price}
-        </p>
+        <p className="text-base font-bold text-black">${tile?.price}</p>
       </div>
 
       <Link href={`/tiles/${tile?._id}`}>

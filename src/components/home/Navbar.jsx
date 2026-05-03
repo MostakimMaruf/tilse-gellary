@@ -21,7 +21,7 @@ const signOut = async () => {
 
       {/* CENTER - MENU */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal gap-2 px-1 font-medium">
+        <ul className="menu menu-horizontal gap-2 px-1 font-medium text-gray-900 ">
           <li>
             <Link href="/" className="hover:text-cyan-400">Home</Link>
           </li>
