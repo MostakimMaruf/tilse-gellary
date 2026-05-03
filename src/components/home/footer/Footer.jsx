@@ -40,9 +40,9 @@ const Footer = () => {
     {/* Contact */}
     <div className="text-center sm:text-left">
       <h3 className="text-white font-semibold mb-3">Contact</h3>
-      <p className="text-sm">📍 Dhaka, Bangladesh</p>
-      <p className="text-sm">📞 +880 1234-567890</p>
-      <p className="text-sm">✉ info@tilegallery.com</p>
+      <p className="text-sm"> Dhaka, Bangladesh</p>
+      <p className="text-sm"> +880 1234-567890</p>
+      <p className="text-sm"> info@tilegallery.com</p>
     </div>
 
   </div>
