@@ -20,7 +20,7 @@ export default function AllTilesPage() {
   return (
     <div className="  bg-gray-100 ">
 
-      <div className="max-w-6xl mx-auto">
+     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border text-gray-400 py-5">
         <input
         type="text"
         placeholder="Search tiles..."

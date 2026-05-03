@@ -11,16 +11,22 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import Link from "next/link";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 
 const SignupPage = () => {
+
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     console.log("Form submitted with:", userData);
-
+    
     const { data, error } = await authClient.signUp.email({
+
       name: userData.name,
       email: userData.email,
       password: userData.password,
@@ -30,11 +36,12 @@ const SignupPage = () => {
     console.log("Signup response:", { data, error });
 
     if (error) {
-        alert("signup failed: " + error.message);
+        toast.error("signup failed: " + error.message);
     }
 
     if (data) {
-        alert("signup successful! Please check your email to verify your account.");
+        toast.success("signup successful! Please check your email to verify your account.");
+        router.push("/");
     }
 
   };
@@ -100,7 +107,7 @@ const SignupPage = () => {
           <div className="flex flex-col gap-3 pt-2">
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-[#c042da] to-[#ea44a1] hover:opacity-90 text-white transition py-3 rounded-xl font-bold text-lg shadow-md"
+              className="w-full bg-linear-to-r from-[#c042da] to-[#ea44a1] hover:opacity-90 text-white transition py-3 rounded-xl font-bold text-lg shadow-md"
             >
               Sign Up
             </Button>
@@ -118,9 +125,9 @@ const SignupPage = () => {
         {/* Footer */}
         <p className="text-sm text-center text-slate-600 mt-8 font-medium">
           Already have an account?{" "}
-          <span className="text-purple-600 font-bold cursor-pointer hover:underline">
-            Login
-          </span>
+          <Link href="/auth/signin" className="text-purple-600 hover:text-purple-800 font-semibold">
+            Sign In
+          </Link>
         </p>
 
       </div>

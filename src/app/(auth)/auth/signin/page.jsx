@@ -30,11 +30,11 @@ const SignupPage = () => {
     console.log("Signup response:", { data, error });
 
     if (error) {
-        alert("signup failed: " + error.message);
+        toast.error("Sign-in failed: " + error.message);
     }
 
     if (data) {
-        alert("signup successful! Please check your email to verify your account.");
+        toast.success("Sign-in successful!");
     }
 
   };

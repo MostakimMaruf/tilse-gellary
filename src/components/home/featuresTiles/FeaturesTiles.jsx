@@ -1,16 +1,25 @@
 // components/FeaturedTiles.jsx
+"use client";
 import TileCard from "./TileCard";
+import { useEffect, useState } from "react";
 
-const FeaturedTiles = async () => {
-const res = await fetch(
-    `${process.env.BETTER_AUTH_URL}/api/tiles?limit=4`,
-    { cache: "no-store" }
-  );
-  if (!res.ok) {
-    return <div className="max-w-6xl mx-auto p-10 text-center">Failed to load featured tiles.</div>;
+const FeaturedTiles = () => {
+  const [tiles, setTiles] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_AUTH_BASE_URL}/api/tiles?limit=4`)
+      .then((res) => res.ok ? res.json() : [])
+      .then((data) => {
+        setTiles(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-16">Loading featured tiles...</div>;
   }
-
-const tiles = await res.json();
 
   return (
     <section className="py-16 px-4  mx-auto bg-gray-100">

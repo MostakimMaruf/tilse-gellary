@@ -71,12 +71,12 @@ const signOut = async () => {
       {/* MOBILE MENU */}
       <div className="lg:hidden ml-2">
         <div className="dropdown dropdown-end">
-          <div tabIndex={0} className="btn btn-ghost">
+          <div tabIndex={0} className="btn btn-ghost text-black">
             ☰
           </div>
           <ul
             tabIndex={0}
-            className="menu dropdown-content mt-3 z-1 p-2 shadow bg-white rounded-box w-52"
+            className="menu dropdown-content mt-3 z-1 p-2 shadow bg-white rounded-box w-52 text-black"
           >
             <li><Link href="/">Home</Link></li>
             <li><Link href="/tiles">All Tiles</Link></li>

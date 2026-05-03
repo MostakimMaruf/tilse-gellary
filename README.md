@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🧱 Tiles Gallery
 
-## Getting Started
+A modern, responsive tile showcase web application built with **Next.js (App Router)** and **BetterAuth** authentication. Discover, explore, and find your perfect aesthetic tile from a curated gallery.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌐 Live URL And Git Ripo
+
+🔗 **[https://tiles-gallery-ebon.vercel.app/]**
+🔗 **[https://github.com/MostakimMaruf/tilse-gellary]**
+
+
+---
+
+## 🎯 Purpose
+
+Tiles Gallery is a full-stack web application. that allows users to browse a curated collection of tiles, search and filter by title, view detailed tile information, and manage their own profile — all within a secure, authenticated environment. 
+
+---
+
+## ✨ Key Features
+
+- 🏠 **Home Page** with animated banner, scrolling marquee, and featured tiles section
+- 🔐 **Authentication** via Email/Password and Google OAuth (powered by BetterAuth + MongoDB Adapter)
+- 🖼️ **All Tiles Gallery** with real-time search functionality
+- 🔍 **Single Tile Detail Page** with high-res preview and full specifications
+- 👤 **My Profile** page with name and image URL update support
+- 📱 **Fully Responsive** — works seamlessly on mobile, tablet, and desktop
+- 🔒 **Protected Routes** for tile details and user profile
+- ⏳ **Loading States** on all data-fetching operations
+- 🚫 **Custom 404 Not Found** page
+- 🎨 **Smooth Animations** using SwiperJS / Animate.css
+
+---
+
+
+## 📁 Project Structure
+
+```
+tiles-gallery/
+├── app/
+│   ├── (auth)/
+│   │   ├── login/
+│   │   └── register/
+│   ├── all-tiles/
+│   ├── tile/
+│   │   └── [id]/
+│   ├── my-profile/
+│   │   └── update/
+│   ├── not-found.js
+│   ├── layout.js
+│   └── page.js
+├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── TileCard.jsx
+│   └── ...
+├── lib/
+│   └── auth.js
+├── public/
+│   └── images/
+├── .env.local
+├── README.md
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔐 Route Permissions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Route | Access |
+|---|---|
+| `/` | Public |
+| `/all-tiles` | Public |
+| `/login` | Public |
+| `/register` | Public |
+| `/tile/[id]` | 🔒 Private (Login required) |
+| `/my-profile` | 🔒 Private (Login required) |
+| `/my-profile/update` | 🔒 Private (Login required) |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 JSON Data Format
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```json
+{
+  "id": "tile_001",
+  "title": "Ceramic Blue Tile",
+  "description": "Premium ceramic tile with blue glaze finish",
+  "image": "/images/tiles/tile_001.jpg",
+  "category": "ceramic",
+  "price": 45.99,
+  "currency": "USD",
+  "dimensions": "60x60 cm",
+  "material": "Ceramic",
+  "inStock": true
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌍 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is deployed on **Vercel**. To deploy your own:
+
+1. Push the project to GitHub
+2. Import the repo on vercel
+3. Add all environment variables in Vercel's dashboard
+4. Deploy!
+
+
+---
+
+
+
+## 👤 Author
+
+Mostakim Hasan Maruf
+
+---
+
+## 📄 License
+
+This project is for academic purposes under assignment category **A8-Apple**...

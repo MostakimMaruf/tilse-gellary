@@ -17,6 +17,7 @@ const TileCard = ({ tile }) => {
           fill
           className="object-cover group-hover:scale-105 transition duration-300"
           onError={() => setImgSrc(placeholder)}
+          unoptimized={typeof imgSrc === 'string' && imgSrc.startsWith('http')}
         />
 
         {!tile?.inStock && (
@@ -27,7 +28,7 @@ const TileCard = ({ tile }) => {
       </div>
 
       <div className="mt-3 space-y-1">
-        <h3 className="text-lg font-semibold line-clamp-1">
+        <h3 className="text-lg font-semibold line-clamp-1 text-black">
           {tile?.title || tile?.name}
         </h3>
 
